@@ -1,0 +1,39 @@
+name: Auto Deploy Hydrosense Admin App to cPanel
+
+on:
+  push:
+    branches:
+      - master  # Automatically deploy on push to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'  # Adjust Node.js version if needed
+
+    # Step 3: Install project dependencies
+    - name: Install dependencies
+      run: npm install
+
+    # Step 4: Build the React app
+    - name: Build the app
+      run: npm run build
+
+    # Step 5: Deploy to cPanel using FTP
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.0.0
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: build/
+        server-dir: /
