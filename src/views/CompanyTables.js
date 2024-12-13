@@ -21,6 +21,7 @@ import ConfirmModal from "components/Modal/ConfirmModal";
 
 const CompanyTables = () => {
   useAuth();
+  //Trigger
 
   const [companies, setCompanies] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
