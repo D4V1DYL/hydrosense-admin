@@ -22,6 +22,14 @@ import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
+import UserRoleTables from "views/UserRoleTable";
+import UserCompanyMappingTables from "views/UserCompanyMappingTable";
+import CompanyTables from "views/CompanyTables";
+import AssignRole from "views/AssignRole";
+import AssignCompany from "views/AssignCompany";
+import EditUserCompanyMapping from "views/EditUserCompanyMapping";
+import CreateCompany from "views/CreateCompany";
+import EditCompany from "views/EditCompany";
 
 var routes = [
   {
@@ -30,6 +38,7 @@ var routes = [
     icon: "ni ni-tv-2 text-primary",
     component: <Index />,
     layout: "/admin",
+    showInSidebar: true,
   },
   // {
   //   path: "/icons",
@@ -53,25 +62,77 @@ var routes = [
   //   layout: "/admin",
   // },
   {
-    path: "/tables",
-    name: "Tables",
-    icon: "ni ni-bullet-list-67 text-red",
-    component: <Tables />,
+    path: "/user-role",
+    name: "Table User Role",
+    icon: "ni ni-single-02 text-red",
+    component: <UserRoleTables />,
     layout: "/admin",
+    showInSidebar: true,
+  },
+  {
+    path: "/user-company",
+    name: "Table User Company",
+    icon: "ni ni-single-02 text-purple",
+    component: <UserCompanyMappingTables />,
+    layout: "/admin",
+    showInSidebar: true,
+  },
+  {
+    path: "/companies",
+    name: "Table Companies",
+    icon: "ni ni-building text-blue",
+    component: <CompanyTables />,
+    layout: "/admin",
+    showInSidebar: true,
   },
   {
     path: "/login",
-    // name: "Login",
-    // icon: "ni ni-key-25 text-info",
+    name: "Login",
+    icon: "ni ni-key-25 text-info",
     component: <Login />,
     layout: "/auth",
+    showInSidebar: false,
   },
-  // {
-  //   path: "/register",
-  //   name: "Register",
-  //   icon: "ni ni-circle-08 text-pink",
-  //   component: <Register />,
-  //   layout: "/auth",
-  // },
+  {
+    path: "/user-role/assign",
+    name: "AssignRole",
+    icon: "ni ni-key-25 text-info",
+    component: <AssignRole />,
+    layout: "/admin",
+    showInSidebar: false,
+  },
+  {
+    path: "/user-company/assign",
+    name: "AssignCompany",
+    icon: "ni ni-key-25 text-info",
+    component: <AssignCompany />,
+    layout: "/admin",
+    showInSidebar: false,
+  },
+  {
+    path: "/user-company/edit/:user_company_id",
+    name: "EditUserCompanyMapping",
+    icon: "ni ni-key-25 text-info",
+    component: <EditUserCompanyMapping />,
+    layout: "/admin",
+    showInSidebar: false,
+  },
+  {
+    path: "companies/create-company",
+    name: "CreateCompany",
+    icon: "ni ni-building text-info",
+    component: <CreateCompany />,
+    layout: "/admin",
+    showInSidebar: false,
+  },
+  {
+    path: "/edit-company/:company_id",
+    name: "EditCompany",
+    icon: "ni ni-building text-info",
+    component: <EditCompany />,
+    layout: "/admin",
+    showInSidebar: false,
+  },
+
 ];
 export default routes;

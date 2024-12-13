@@ -34,6 +34,7 @@ import {
   Media,
 } from "reactstrap";
 
+
 const AdminNavbar = (props) => {
 
   const navigate = useNavigate();
@@ -60,14 +61,11 @@ const AdminNavbar = (props) => {
               <DropdownToggle className="pr-0" nav>
                 <Media className="align-items-center">
                   <span className="avatar avatar-sm rounded-circle">
-                    <img
-                      alt="..."
-                      src={require("../../assets/img/theme/team-4-800x800.jpg")}
-                    />
+                  <i className="ni ni-circle-08" style={{ fontSize: "40px" }}></i>
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
                     <span className="mb-0 text-sm font-weight-bold">
-                      Jessica Jones
+                      Super Admin
                     </span>
                   </Media>
                 </Media>
@@ -76,10 +74,10 @@ const AdminNavbar = (props) => {
                 <DropdownItem className="noti-title" header tag="div">
                   <h6 className="text-overflow m-0">Welcome!</h6>
                 </DropdownItem>
-                <DropdownItem to="/admin/user-profile" tag={Link}>
+                {/* <DropdownItem to="/admin/user-profile" tag={Link}>
                   <i className="ni ni-settings-gear-65" />
                   <span>Settings</span>
-                </DropdownItem>
+                </DropdownItem> */}
                 <DropdownItem divider />
                 <DropdownItem href="#pablo" onClick={handleLogout}>
                   <i className="ni ni-user-run" />

@@ -1,6 +1,38 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 
 const Header = () => {
+  const [data, setData] = useState({
+    productTested: 0,
+    usersRegistered: 0,
+    companyRegistered: 0,
+    productRegistered: 0,
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get("https://apihydrosense.localto.net/superadmin/header", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setData({
+          productTested: response.data.total_products_tested,
+          usersRegistered: response.data.total_users_registered,
+          companyRegistered: response.data.total_companies_registered,
+          productRegistered: response.data.total_products_registered,
+        });
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="header bg-gradient-info pb-8 pt-5 pt-md-8">
@@ -20,7 +52,7 @@ const Header = () => {
                           Product Tested
                         </CardTitle>
                         <span className="h2 font-weight-bold mb-0">
-                          350,897
+                          {data.productTested}
                         </span>
                       </div>
                       <Col className="col-auto">
@@ -29,12 +61,6 @@ const Header = () => {
                         </div>
                       </Col>
                     </Row>
-                    <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className="text-success mr-2">
-                        <i className="fa fa-arrow-up" /> 3.48%
-                      </span>{" "}
-                      <span className="text-nowrap">Since last month</span>
-                    </p>
                   </CardBody>
                 </Card>
               </Col>
@@ -49,7 +75,9 @@ const Header = () => {
                         >
                           Users Registered
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">2,356</span>
+                        <span className="h2 font-weight-bold mb-0">
+                          {data.usersRegistered}
+                        </span>
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -57,12 +85,6 @@ const Header = () => {
                         </div>
                       </Col>
                     </Row>
-                    <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className="text-danger mr-2">
-                        <i className="fas fa-arrow-down" /> 3.48%
-                      </span>{" "}
-                      <span className="text-nowrap">Since last week</span>
-                    </p>
                   </CardBody>
                 </Card>
               </Col>
@@ -77,7 +99,9 @@ const Header = () => {
                         >
                           Company Registered
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">924</span>
+                        <span className="h2 font-weight-bold mb-0">
+                          {data.companyRegistered}
+                        </span>
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -85,12 +109,6 @@ const Header = () => {
                         </div>
                       </Col>
                     </Row>
-                    <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className="text-warning mr-2">
-                        <i className="fas fa-arrow-down" /> 1.10%
-                      </span>{" "}
-                      <span className="text-nowrap">Since yesterday</span>
-                    </p>
                   </CardBody>
                 </Card>
               </Col>
@@ -105,7 +123,9 @@ const Header = () => {
                         >
                           Product Registered
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">49,65%</span>
+                        <span className="h2 font-weight-bold mb-0">
+                          {data.productRegistered}
+                        </span>
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -113,12 +133,6 @@ const Header = () => {
                         </div>
                       </Col>
                     </Row>
-                    <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className="text-success mr-2">
-                        <i className="fas fa-arrow-up" /> 12%
-                      </span>{" "}
-                      <span className="text-nowrap">Since last month</span>
-                    </p>
                   </CardBody>
                 </Card>
               </Col>
