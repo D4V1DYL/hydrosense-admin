@@ -26,6 +26,8 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 
 import routes from "routes.js";
 
+//Trigger
+
 const Admin = (props) => {
   const mainContent = React.useRef(null);
   const location = useLocation();
