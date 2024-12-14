@@ -95,7 +95,7 @@ const CompanyTables = () => {
             <Card className="bg-default shadow">
               <CardHeader className="bg-transparent border-0 d-flex justify-content-between align-items-center">
                 <h3 className="text-white mb-0">Companies</h3>
-                <Button color="primary" onClick={() => navigate("/admin/create-company")}>
+                <Button color="primary" onClick={() => navigate("/admin/companies/create-company")}>
                   Create Company
                 </Button>
               </CardHeader>
