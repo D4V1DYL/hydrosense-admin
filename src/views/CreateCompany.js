@@ -46,7 +46,7 @@ const CreateCompany = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post(
+      await axios.post(
         "https://apihydrosense.localto.net/superadmin/create-company",
         formData,
         {

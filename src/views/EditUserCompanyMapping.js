@@ -76,7 +76,7 @@ const EditUserCompanyMapping = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.put(
+      await axios.put(
         `https://apihydrosense.localto.net/superadmin/user-company-mappings/${user_company_id}`,
         { user_id: userId, company_id: companyId },
         {
