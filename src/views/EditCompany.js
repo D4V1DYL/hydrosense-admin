@@ -72,7 +72,7 @@ const EditCompany = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.put(
+      await axios.put(
         `https://apihydrosense.localto.net/superadmin/companies/${company_id}`,
         formData,
         {
