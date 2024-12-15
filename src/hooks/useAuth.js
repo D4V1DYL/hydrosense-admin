@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import config from "config";
 
 const useAuth = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const useAuth = () => {
           return;
         }
 
-        await axios.get("https://apihydrosense.localto.net/auth/check-token", {
+        await axios.get(`${config.apiBaseUrl}/auth/check-token`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
+import config from "config";
 
 const Header = () => {
   const [data, setData] = useState({
@@ -14,7 +15,7 @@ const Header = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("https://apihydrosense.localto.net/superadmin/header", {
+        const response = await axios.get(`${config.apiBaseUrl}/superadmin/header`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
