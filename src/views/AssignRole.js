@@ -16,6 +16,7 @@ import {
 } from "reactstrap";
 import Header from "components/Headers/Header.js";
 import useAuth from "hooks/useAuth";
+import config from "config";
 
 const AssignRole = () => {
   useAuth();
@@ -32,14 +33,14 @@ const AssignRole = () => {
     const fetchUsersAndRoles = async () => {
       try {
         const token = localStorage.getItem("token");
-        const usersResponse = await axios.get("https://apihydrosense.localto.net/superadmin/users", {
+        const usersResponse = await axios.get(`${config.apiBaseUrl}/superadmin/users`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         setUsers(usersResponse.data);
 
-        const rolesResponse = await axios.get("https://apihydrosense.localto.net/superadmin/roles", {
+        const rolesResponse = await axios.get(`${config.apiBaseUrl}/superadmin/roles`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -58,7 +59,7 @@ const AssignRole = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "https://apihydrosense.localto.net/superadmin/assign-role",
+        `${config.apiBaseUrl}/superadmin/assign-role`,
         { user_id: userId, role },
         {
           headers: {

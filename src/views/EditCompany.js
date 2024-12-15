@@ -16,6 +16,7 @@ import {
 } from "reactstrap";
 import Header from "components/Headers/Header.js";
 import useAuth from "hooks/useAuth";
+import config from "config";
 
 const EditCompany = () => {
   useAuth();
@@ -36,7 +37,7 @@ const EditCompany = () => {
     const fetchCompany = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`https://apihydrosense.localto.net/superadmin/companies/${company_id}`, {
+        const response = await axios.get(`${config.apiBaseUrl}/superadmin/companies/${company_id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -73,7 +74,7 @@ const EditCompany = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `https://apihydrosense.localto.net/superadmin/companies/${company_id}`,
+        `${config.apiBaseUrl}/superadmin/companies/${company_id}`,
         formData,
         {
           headers: {

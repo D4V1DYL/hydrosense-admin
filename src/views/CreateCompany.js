@@ -16,6 +16,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import Header from "components/Headers/Header.js";
 import useAuth from "hooks/useAuth";
+import config from "config";
 
 const CreateCompany = () => {
   useAuth();
@@ -47,7 +48,7 @@ const CreateCompany = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "https://apihydrosense.localto.net/superadmin/create-company",
+        `${config.apiBaseUrl}/superadmin/create-company`,
         formData,
         {
           headers: {

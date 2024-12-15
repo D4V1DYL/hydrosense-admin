@@ -13,6 +13,7 @@ import {
   InputGroup,
   Col,
 } from "reactstrap";
+import config from "config";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://apihydrosense.localto.net/auth/login", {
+      const response = await axios.post(`${config.apiBaseUrl}/auth/login`, {
         email,
         password,
       });

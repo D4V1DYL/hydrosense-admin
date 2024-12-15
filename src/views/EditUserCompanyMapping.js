@@ -17,6 +17,7 @@ import {
 } from "reactstrap";
 import Header from "components/Headers/Header.js";
 import useAuth from "hooks/useAuth";
+import config from "config";
 
 const EditUserCompanyMapping = () => {
   useAuth();
@@ -34,14 +35,14 @@ const EditUserCompanyMapping = () => {
     const fetchUsersAndCompanies = async () => {
       try {
         const token = localStorage.getItem("token");
-        const usersResponse = await axios.get("https://apihydrosense.localto.net/superadmin/users", {
+        const usersResponse = await axios.get(`${config.apiBaseUrl}/superadmin/users`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         setUsers(usersResponse.data);
 
-        const companiesResponse = await axios.get("https://apihydrosense.localto.net/superadmin/companies", {
+        const companiesResponse = await axios.get(`${config.apiBaseUrl}/superadmin/companies`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -55,7 +56,7 @@ const EditUserCompanyMapping = () => {
     const fetchUserCompanyMapping = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`https://apihydrosense.localto.net/superadmin/user-company-mappings/${user_company_id}`, {
+        const response = await axios.get(`${config.apiBaseUrl}/superadmin/user-company-mappings/${user_company_id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

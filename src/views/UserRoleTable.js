@@ -11,6 +11,7 @@ import {
 import Header from "components/Headers/Header.js";
 import useAuth from "hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import config from "config";
 
 const UserRoleTables = () => {
   useAuth();
@@ -24,7 +25,7 @@ const UserRoleTables = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("https://apihydrosense.localto.net/superadmin/users-with-roles", {
+        const response = await axios.get(`${config.apiBaseUrl}/superadmin/users-with-roles`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

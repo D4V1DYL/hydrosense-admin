@@ -18,6 +18,7 @@ import {
 import Header from "components/Headers/Header.js";
 import useAuth from "hooks/useAuth";
 import ConfirmModal from "components/Modal/ConfirmModal";
+import config from "config";
 
 const CompanyTables = () => {
   useAuth();
@@ -33,7 +34,7 @@ const CompanyTables = () => {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("https://apihydrosense.localto.net/superadmin/companies", {
+      const response = await axios.get(`${config.apiBaseUrl}/superadmin/companies`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -57,7 +58,7 @@ const CompanyTables = () => {
 
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`https://apihydrosense.localto.net/superadmin/companies/${selectedCompany.company_id}`, {
+      await axios.delete(`${config.apiBaseUrl}/superadmin/companies/${selectedCompany.company_id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

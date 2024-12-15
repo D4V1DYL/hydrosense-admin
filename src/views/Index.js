@@ -11,6 +11,7 @@ import {
 import Header from "components/Headers/Header.js";
 import { useNavigate } from "react-router-dom";
 import useAuth from "hooks/useAuth";
+import config from "config";
 
 const Dashboard = () => {
 
@@ -38,7 +39,7 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("https://apihydrosense.localto.net/superadmin/dashboard", {
+        const response = await axios.get(`${config.apiBaseUrl}/superadmin/dashboard`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -58,7 +59,7 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("https://apihydrosense.localto.net/superadmin/dashboard", {
+        const response = await axios.get(`${config.apiBaseUrl}/superadmin/dashboard`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
