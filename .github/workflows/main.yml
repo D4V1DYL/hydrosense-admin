@@ -22,11 +22,15 @@ jobs:
 
     # Step 3: Install project dependencies
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd FE
+        npm install
 
     # Step 4: Build the React app
     - name: Build the app
-      run: npm run build
+      run: |
+        cd FE
+        npm run build
 
     # Step 5: Deploy to cPanel using FTP
     - name: 📂 Sync files
@@ -35,7 +39,7 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: build/
+        local-dir: FE/build/
         server-dir: /
         timeout: 60000
 
